@@ -17,14 +17,13 @@
 
         .action-box { background: #222; padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
         .btn-download { background: #fff; color: #000; display: block; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; font-size: 14px; }
-        .btn-whatsapp-top { background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; font-size: 14px; }
         
         label { font-size: 12px; color: #aaa; margin-left: 5px; }
         input, select { width: 100%; padding: 14px; margin: 8px 0 15px 0; border-radius: 8px; border: 1px solid #333; background: #222; color: #fff; box-sizing: border-box; font-size: 16px; }
         button { width: 100%; padding: 16px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; font-size: 14px; transition: 0.2s; text-transform: uppercase; }
         .btn-red { background: var(--red); color: white; }
+        .btn-green { background: var(--green); color: white; text-decoration: none; display: block; text-align: center; }
         .btn-outline { background: transparent; border: 1px solid #444; color: #aaa; }
-        .btn-whatsapp-pay { background: var(--green); color: white; margin-top: 15px; display: block; text-align: center; text-decoration: none; padding: 16px; border-radius: 8px; font-weight: bold; }
         
         .price-info { background: #1a1a1a; padding: 15px; border-radius: 8px; border-left: 4px solid var(--red); margin: 15px 0; text-align: center; }
         .price-value { color: var(--green); font-size: 22px; font-weight: bold; }
@@ -42,54 +41,59 @@
         <h2>CLONEFLIX</h2>
 
         <div class="tutorial-section">
-            <h3>PASSO A PASSO</h3>
-            <div class="step"><span>1️⃣</span> <span><b>App:</b> Baixe o app no botão abaixo.</span></div>
-            <div class="step"><span>2️⃣</span> <span><b>Login:</b> Informe seu usuário e escolha o plano.</span></div>
-            <div class="step"><span>3️⃣</span> <span><b>Renovação:</b> O sistema valida se o usuário existe.</span></div>
-            <div class="step"><span>4️⃣</span> <span><b>Ativação:</b> Pague e envie a <b>FOTO</b> do comprovante.</span></div>
+            <h3>GUIA RÁPIDO</h3>
+            <div class="step"><span>🧪</span> <span><b>Teste:</b> Peça um teste grátis no WhatsApp.</span></div>
+            <div class="step"><span>💳</span> <span><b>Pagamento:</b> Gere o Pix para renovar ou comprar.</span></div>
+            <div class="step"><span>📸</span> <span><b>Ativação:</b> Envie a FOTO do comprovante no Zap.</span></div>
         </div>
 
         <div class="action-box">
             <a href="https://www.mediafire.com/file/r3echxcrm088vl4/CLONEFLIX.apk/file" target="_blank" class="btn-download">⬇️ BAIXAR APP CLONEFLIX</a>
-            <a href="https://wa.me/5521981773804" target="_blank" class="btn-whatsapp-top">💬 SUPORTE / DÚVIDAS</a>
         </div>
 
         <div id="section-home">
-            <label>O que deseja?</label>
-            <select id="order-type">
-                <option value="RENOVAÇÃO">🔄 RENOVAR MEU ACESSO (Login Existente)</option>
-                <option value="NOVO ACESSO">🛒 COMPRAR NOVO ACESSO (Primeira vez)</option>
+            <label>O que você precisa?</label>
+            <select id="order-type" onchange="alternarFluxo()">
+                <option value="RENOVAÇÃO">🔄 RENOVAR MEU ACESSO</option>
+                <option value="NOVO ACESSO">🛒 COMPRAR NOVO ACESSO</option>
+                <option value="TESTE">🧪 SOLICITAR TESTE GRÁTIS</option>
             </select>
 
-            <input type="text" id="new-user" placeholder="Digite seu Usuário">
-            
-            <label>Plano:</label>
-            <select id="plan-select" onchange="atualizarValor()">
-                <option value="15">15 Dias - R$ 15,00</option>
-                <option value="20">30 Dias - R$ 20,00</option>
-                <option value="35">60 Dias - R$ 35,00</option>
-            </select>
+            <div id="campos-venda">
+                <input type="text" id="new-user" placeholder="Digite seu Usuário">
+                
+                <label>Plano:</label>
+                <select id="plan-select" onchange="atualizarValor()">
+                    <option value="15">15 Dias - R$ 15,00</option>
+                    <option value="20">30 Dias - R$ 20,00</option>
+                    <option value="35">60 Dias - R$ 35,00</option>
+                </select>
 
-            <label>Telas:</label>
-            <select id="screens-select" onchange="atualizarValor()">
-                <option value="0">1 Tela</option>
-                <option value="10">2 Telas (+ R$ 10,00)</option>
-            </select>
+                <label>Telas:</label>
+                <select id="screens-select" onchange="atualizarValor()">
+                    <option value="0">1 Tela</option>
+                    <option value="10">2 Telas (+ R$ 10,00)</option>
+                </select>
 
-            <div class="price-info">Total: <span class="price-value" id="display-price">R$ 15,00</span></div>
-            <button class="btn-red" id="btn-gerar" onclick="processarPedido()">PROSSEGUIR COM PIX</button>
+                <div class="price-info">Total: <span class="price-value" id="display-price">R$ 15,00</span></div>
+                <button class="btn-red" id="btn-gerar" onclick="processarPedido()">PROSSEGUIR COM PIX</button>
+            </div>
+
+            <div id="campos-teste" class="hidden">
+                <p style="text-align: center; font-size: 14px; color: #aaa; margin-bottom: 20px;">Você será direcionado ao suporte para receber um login de teste temporário.</p>
+                <button class="btn-green" onclick="solicitarTeste()">💬 PEDIR TESTE NO WHATSAPP</button>
+            </div>
         </div>
     </div>
 
     <div id="pix-area" class="hidden">
-        <h3 style="color:#000; margin-top:0;">Pagar via Pix</h3>
-        <p style="color:#666; font-size: 13px;">Pague e anexe o comprovante no suporte.</p>
+        <h3 style="color:#000; margin-top:0;">Pagamento Pix</h3>
         <img id="pix-qr" src="" alt="QR Code">
         <div class="pix-code-box" id="pix-code-text">Gerando...</div>
         <button class="btn-red" style="background:#444;" onclick="copyPix()">COPIAR CÓDIGO PIX</button>
         <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
         <p style="color: #d32f2f; font-size: 13px; font-weight: bold;">⚠️ OBRIGATÓRIO: Enviar FOTO do comprovante!</p>
-        <button class="btn-whatsapp-pay" onclick="enviarComprovante()">✅ ENVIAR DADOS + FOTO DO PAGAMENTO</button>
+        <button class="btn-green" style="padding: 16px; border-radius: 8px; font-weight: bold;" onclick="enviarComprovante()">✅ ENVIAR DADOS + FOTO</button>
         <button class="btn-outline" style="width:100%; border-color:#ccc; margin-top:10px;" onclick="location.reload()">CANCELAR</button>
     </div>
 </div>
@@ -98,6 +102,17 @@
     const MP_TOKEN = "APP_USR-8338687905947152-120302-491c360146851b6fa525d557a014c433-2945698544";
     const FB_URL = "https://cloneflix-16f9c-default-rtdb.firebaseio.com/usuarios";
     let dadosCompra = {};
+
+    function alternarFluxo() {
+        const tipo = document.getElementById('order-type').value;
+        if(tipo === "TESTE") {
+            document.getElementById('campos-venda').classList.add('hidden');
+            document.getElementById('campos-teste').classList.remove('hidden');
+        } else {
+            document.getElementById('campos-venda').classList.remove('hidden');
+            document.getElementById('campos-teste').classList.add('hidden');
+        }
+    }
 
     function atualizarValor() {
         const total = parseFloat(document.getElementById('plan-select').value) + parseFloat(document.getElementById('screens-select').value);
@@ -111,7 +126,6 @@
         if(!user) return alert("Por favor, informe o usuário!");
         document.getElementById('btn-gerar').innerText = "VERIFICANDO...";
 
-        // Se for renovação, verifica se o usuário existe no Firebase
         if(tipo === "RENOVAÇÃO") {
             try {
                 const res = await fetch(`${FB_URL}.json`);
@@ -121,17 +135,16 @@
                     if(data[id].user === user) { existe = true; break; }
                 }
                 if(!existe) {
-                    alert("⚠️ USUÁRIO NÃO ENCONTRADO!\nSe você ainda não tem conta, escolha 'NOVO ACESSO'.");
+                    alert("⚠️ USUÁRIO NÃO ENCONTRADO!\nPara sua primeira compra, escolha 'NOVO ACESSO'.");
                     document.getElementById('btn-gerar').innerText = "PROSSEGUIR COM PIX";
                     return;
                 }
             } catch (e) {
-                alert("Erro ao validar usuário. Tente novamente.");
+                alert("Erro de conexão.");
                 document.getElementById('btn-gerar').innerText = "PROSSEGUIR COM PIX";
                 return;
             }
         }
-
         gerarPix(user, tipo);
     }
 
@@ -157,16 +170,21 @@
                 document.getElementById('main-ui').classList.add('hidden');
                 document.getElementById('pix-area').classList.remove('hidden');
             }
-        } catch (e) { alert("Erro ao gerar Pix."); document.getElementById('btn-gerar').innerText = "PROSSEGUIR COM PIX"; }
+        } catch (e) { alert("Erro no Pix."); document.getElementById('btn-gerar').innerText = "PROSSEGUIR COM PIX"; }
     }
 
     function copyPix() {
         navigator.clipboard.writeText(document.getElementById('pix-code-text').innerText);
-        alert("Código Copiado!");
+        alert("Copiado!");
     }
 
     function enviarComprovante() {
         const msg = `🚀 *NOVA SOLICITAÇÃO*%0A%0A📌 *Ação:* ${dadosCompra.tipo}%0A👤 *Usuário:* ${dadosCompra.user}%0A📺 *Telas:* ${dadosCompra.telas}%0A💳 *Plano:* ${dadosCompra.plano}%0A💰 *Valor:* R$ ${dadosCompra.total.toFixed(2).replace('.', ',')}%0A%0A📸 *ESTOU ENVIANDO A FOTO DO COMPROVANTE...*`;
+        window.open(`https://wa.me/5521981773804?text=${msg}`, '_blank');
+    }
+
+    function solicitarTeste() {
+        const msg = `Olá! Gostaria de solicitar um *TESTE GRÁTIS* do Cloneflix para conhecer os canais e filmes.`;
         window.open(`https://wa.me/5521981773804?text=${msg}`, '_blank');
     }
 </script>
