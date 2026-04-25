@@ -3,32 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLONEFLIX - CENTRAL DE ACESSO</title>
+    <title>CLONEFLIX - CENTRAL DE ATENDIMENTO</title>
     <style>
         :root { --red: #E50914; --bg: #000; --card: #141414; --text: #fff; --green: #25d366; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; display: flex; justify-content: center; }
         .container { width: 100%; max-width: 400px; background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid #222; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        h2 { color: var(--red); text-align: center; font-size: 28px; margin-bottom: 25px; }
-        .install-box { background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px solid var(--red); text-align: center; margin-bottom: 25px; }
-        .btn-install { background: #fff; color: #000; display: block; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; margin-top: 10px; font-size: 14px; }
+        h2 { color: var(--red); text-align: center; font-size: 28px; margin-bottom: 25px; letter-spacing: 2px; }
+        
+        .action-box { background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px solid #333; text-align: center; margin-bottom: 20px; }
+        .btn-download { background: #fff; color: #000; display: block; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; margin-top: 10px; font-size: 14px; }
+        .btn-whatsapp-top { background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; margin-top: 10px; font-size: 14px; }
+        
         label { font-size: 12px; color: #aaa; margin-left: 5px; }
         input, select { width: 100%; padding: 14px; margin: 8px 0 15px 0; border-radius: 8px; border: 1px solid #333; background: #222; color: #fff; box-sizing: border-box; font-size: 16px; }
         button { width: 100%; padding: 16px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; font-size: 14px; transition: 0.2s; text-transform: uppercase; }
         .btn-red { background: var(--red); color: white; }
         .btn-outline { background: transparent; border: 1px solid #444; color: #aaa; }
+        .btn-whatsapp-pay { background: var(--green); color: white; margin-top: 15px; display: block; text-align: center; text-decoration: none; padding: 16px; border-radius: 8px; font-weight: bold; }
+        
         .price-info { background: #1a1a1a; padding: 15px; border-radius: 8px; border-left: 4px solid var(--red); margin: 15px 0; text-align: center; }
         .price-value { color: var(--green); font-size: 22px; font-weight: bold; }
         .hidden { display: none; }
         
-        /* TELA DE SUCESSO */
-        #success-area { background: #fff; color: #000; padding: 20px; border-radius: 12px; text-align: center; }
-        .info-card { background: #f4f4f4; padding: 15px; border-radius: 8px; text-align: left; margin: 15px 0; border: 1px solid #ddd; }
-        .info-card p { margin: 5px 0; font-size: 14px; font-weight: bold; color: #333; }
-        .info-card span { font-weight: normal; color: #E50914; }
-        
         #pix-area { text-align: center; background: #fff; color: #000; padding: 20px; border-radius: 12px; }
-        #pix-qr { width: 200px; height: 200px; border: 1px solid #ddd; }
-        .pix-code-box { background: #f0f0f0; padding: 10px; border-radius: 6px; font-size: 10px; word-break: break-all; margin: 10px 0; border: 1px dashed #999; }
+        #pix-qr { width: 200px; height: 200px; border: 1px solid #ddd; margin: 10px 0; }
+        .pix-code-box { background: #f0f0f0; padding: 10px; border-radius: 6px; font-size: 10px; word-break: break-all; margin: 10px 0; border: 1px dashed #999; color: #333; }
     </style>
 </head>
 <body>
@@ -36,152 +35,102 @@
 <div class="container">
     <div id="main-ui">
         <h2>CLONEFLIX</h2>
-        <div id="section-login">
-            <div class="install-box">
-                <span style="font-size: 14px;">Baixe o Aplicativo Oficial</span>
-                <a href="https://www.mediafire.com/file/r3echxcrm088vl4/CLONEFLIX.apk/file" target="_blank" class="btn-install">DOWNLOAD APK</a>
-            </div>
-            <input type="text" id="login-u" placeholder="Usuário">
-            <input type="password" id="login-p" placeholder="Senha">
-            <button class="btn-red" onclick="acessarPerfil()">ENTRAR NO PAINEL</button>
-            <button class="btn-outline" onclick="showSection('section-buy')">COMPRAR NOVO ACESSO</button>
-        </div>
 
-        <div id="section-buy" class="hidden">
-            <h3>Novo Cadastro</h3>
-            <input type="text" id="new-user" placeholder="Crie um Usuário">
-            <input type="password" id="new-pass" placeholder="Crie uma Senha">
-            <select id="plan-select" onchange="calcularTotal('display-price', 'plan-select', 'screens-select')">
+        <div id="section-home">
+            <div class="action-box">
+                <span style="font-size: 13px; color: #eee;">Atendimento e Aplicativo</span>
+                <a href="https://wa.me/5521981773804" target="_blank" class="btn-whatsapp-top">💬 SUPORTE WHATSAPP</a>
+                <a href="https://www.mediafire.com/file/r3echxcrm088vl4/CLONEFLIX.apk/file" target="_blank" class="btn-download">⬇️ BAIXAR APP (APK)</a>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #222; margin: 20px 0;">
+
+            <label>Selecione uma opção:</label>
+            <select id="order-type">
+                <option value="NOVO ACESSO">🛒 COMPRAR NOVO ACESSO</option>
+                <option value="RENOVAÇÃO">🔄 RENOVAR MEU ACESSO</option>
+            </select>
+
+            <input type="text" id="new-user" placeholder="Usuário (Login)">
+            
+            <label>Plano:</label>
+            <select id="plan-select" onchange="atualizarValor()">
                 <option value="15">15 Dias - R$ 15,00</option>
                 <option value="20">30 Dias - R$ 20,00</option>
                 <option value="35">60 Dias - R$ 35,00</option>
             </select>
-            <select id="screens-select" onchange="calcularTotal('display-price', 'plan-select', 'screens-select')">
+
+            <label>Telas:</label>
+            <select id="screens-select" onchange="atualizarValor()">
                 <option value="0">1 Tela (Padrão)</option>
                 <option value="10">2 Telas (+ R$ 10,00)</option>
             </select>
+
             <div class="price-info">Total: <span class="price-value" id="display-price">R$ 15,00</span></div>
-            <button class="btn-red" id="btn-pay" onclick="gerarPix()">PAGAR COM PIX</button>
-            <button class="btn-outline" onclick="showSection('section-login')">VOLTAR</button>
+            <button class="btn-red" id="btn-gerar" onclick="gerarPix()">GERAR PIX AGORA</button>
         </div>
     </div>
 
     <div id="pix-area" class="hidden">
-        <h3 style="color:#000; margin-bottom: 5px;">Aguardando Pagamento</h3>
-        <p style="color:#666; font-size: 12px; margin-bottom: 15px;">A liberação ocorre em instantes.</p>
+        <h3 style="color:#000; margin-top:0;">Pagamento Pix</h3>
+        <p style="color:#666; font-size: 13px;">Realize o pagamento e envie o comprovante.</p>
         <img id="pix-qr" src="" alt="QR Code">
         <div class="pix-code-box" id="pix-code-text">Gerando...</div>
-        <button class="btn-red" onclick="copyPix()">COPIAR CÓDIGO PIX</button>
-        <p style="font-size:12px; color:#E50914; font-weight:bold; margin-top:15px">⚠️ NÃO FECHE ESTA TELA</p>
-    </div>
-
-    <div id="success-area" class="hidden">
-        <h2 style="color: #25d366;">PAGAMENTO APROVADO!</h2>
-        <div class="info-card">
-            <p>USUÁRIO: <span id="res-user"></span></p>
-            <p>SENHA: <span id="res-pass"></span></p>
-            <p>TELAS: <span id="res-screens"></span></p>
-            <p>VALIDADE: <span id="res-exp"></span></p>
-        </div>
-        <p style="font-size: 13px; margin-bottom: 15px;">Instale o APK abaixo para começar:</p>
-        <a href="https://www.mediafire.com/file/r3echxcrm088vl4/CLONEFLIX.apk/file" class="btn-install" style="background: #000; color: #fff; border: 1px solid #333;">DOWNLOAD APK ATUALIZADO</a>
-        <button class="btn-outline" style="width:100%; margin-top:20px; border:none; color:#666" onclick="location.reload()">SAIR E VOLTAR</button>
+        <button class="btn-red" style="background:#444;" onclick="copyPix()">COPIAR CÓDIGO PIX</button>
+        
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+        
+        <button class="btn-whatsapp-pay" onclick="enviarComprovante()">✅ ENVIAR COMPROVANTE</button>
+        <button class="btn-outline" style="width:100%; border-color:#ccc; margin-top:10px;" onclick="location.reload()">VOLTAR AO INÍCIO</button>
     </div>
 </div>
 
 <script>
     const MP_TOKEN = "APP_USR-8338687905947152-120302-491c360146851b6fa525d557a014c433-2945698544";
-    const FB_URL = "https://cloneflix-16f9c-default-rtdb.firebaseio.com/usuarios";
-    let checkInterval = null;
+    let dadosCompra = {};
 
-    function showSection(id) {
-        document.getElementById('main-ui').classList.add('hidden');
-        document.getElementById('pix-area').classList.add('hidden');
-        document.getElementById('success-area').classList.add('hidden');
-        document.getElementById(id).classList.remove('hidden');
-        if(id === 'section-buy' || id === 'section-login') document.getElementById('main-ui').classList.remove('hidden');
-    }
-
-    function calcularTotal(displayId, planId, screenId) {
-        const total = parseFloat(document.getElementById(planId).value) + parseFloat(document.getElementById(screenId).value);
-        document.getElementById(displayId).innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    function atualizarValor() {
+        const total = parseFloat(document.getElementById('plan-select').value) + parseFloat(document.getElementById('screens-select').value);
+        document.getElementById('display-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 
     async function gerarPix() {
         const user = document.getElementById('new-user').value.trim();
-        const pass = document.getElementById('new-pass').value.trim();
-        if(!user || !pass) return alert("Crie um usuário e senha!");
+        if(!user) return alert("Por favor, informe seu usuário!");
 
-        const plano = document.getElementById('plan-select').value;
+        document.getElementById('btn-gerar').innerText = "PROCESSANDO...";
+        const tipo = document.getElementById('order-type').value;
+        const planoStr = document.getElementById('plan-select').options[document.getElementById('plan-select').selectedIndex].text;
         const adicional = document.getElementById('screens-select').value;
-        const total = parseFloat(plano) + parseFloat(adicional);
+        const total = parseFloat(document.getElementById('plan-select').value) + parseFloat(adicional);
         const telas = adicional == "10" ? "2 Telas" : "1 Tela";
 
-        document.getElementById('btn-pay').innerText = "GERANDO...";
+        dadosCompra = { user, total, telas, plano: planoStr, tipo };
 
         try {
             const response = await fetch("https://api.mercadopago.com/v1/payments", {
                 method: "POST",
-                headers: { 
-                    "Authorization": `Bearer ${MP_TOKEN}`, 
-                    "Content-Type": "application/json", 
-                    "X-Idempotency-Key": Math.random().toString() 
-                },
-                body: JSON.stringify({ 
-                    transaction_amount: total, 
-                    description: `Acesso:${user}`, 
-                    payment_method_id: "pix", 
-                    payer: { email: "cliente@cloneflix.com" } 
-                })
+                headers: { "Authorization": `Bearer ${MP_TOKEN}`, "Content-Type": "application/json", "X-Idempotency-Key": Math.random().toString() },
+                body: JSON.stringify({ transaction_amount: total, description: `${tipo}: ${user}`, payment_method_id: "pix", payer: { email: "pix@cloneflix.com" } })
             });
             const data = await response.json();
-            
             if(data.point_of_interaction) {
                 document.getElementById('pix-qr').src = `data:image/png;base64,${data.point_of_interaction.transaction_data.qr_code_base64}`;
                 document.getElementById('pix-code-text').innerText = data.point_of_interaction.transaction_data.qr_code;
-                showSection('pix-area');
-                
-                // Começa a vigiar o Firebase
-                aguardarAprovacao(user, pass, telas);
+                document.getElementById('main-ui').classList.add('hidden');
+                document.getElementById('pix-area').classList.remove('hidden');
             }
-        } catch (e) { alert("Erro de conexão."); }
-    }
-
-    function aguardarAprovacao(user, pass, telas) {
-        checkInterval = setInterval(async () => {
-            const res = await fetch(`${FB_URL}.json`);
-            const data = await res.json();
-            for(let id in data) {
-                if(data[id].user === user) {
-                    clearInterval(checkInterval);
-                    document.getElementById('res-user').innerText = user;
-                    document.getElementById('res-pass').innerText = pass;
-                    document.getElementById('res-screens').innerText = telas;
-                    document.getElementById('res-exp').innerText = new Date(data[id].expira).toLocaleDateString('pt-BR');
-                    showSection('success-area');
-                }
-            }
-        }, 4000); // Checa a cada 4 segundos
+        } catch (e) { alert("Erro ao gerar Pix."); }
     }
 
     function copyPix() {
         navigator.clipboard.writeText(document.getElementById('pix-code-text').innerText);
-        alert("Código Copiado!");
+        alert("Copiado com sucesso!");
     }
 
-    async function acessarPerfil() {
-        const u = document.getElementById('login-u').value.trim();
-        const p = document.getElementById('login-p').value.trim();
-        const res = await fetch(`${FB_URL}.json`);
-        const data = await res.json();
-        for (let id in data) {
-            if (data[id].user === u && data[id].pass === p) {
-                // Para renovação, você pode adicionar a lógica de perfil aqui se desejar
-                alert("Login realizado! Você já está ativo.");
-                return;
-            }
-        }
-        alert("Não encontrado.");
+    function enviarComprovante() {
+        const msg = `🚀 *PEDIDO CLONEFLIX*%0A%0A📌 *Ação:* ${dadosCompra.tipo}%0A👤 *Usuário:* ${dadosCompra.user}%0A📺 *Telas:* ${dadosCompra.telas}%0A💳 *Plano:* ${dadosCompra.plano}%0A💰 *Valor:* R$ ${dadosCompra.total.toFixed(2).replace('.', ',')}%0A%0A✅ *Paguei o Pix, segue o comprovante!*`;
+        window.open(`https://wa.me/5521981773804?text=${msg}`, '_blank');
     }
 </script>
 </body>
