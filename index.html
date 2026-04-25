@@ -10,7 +10,6 @@
         .container { width: 100%; max-width: 420px; background: var(--card); padding: 25px; border-radius: 15px; border: 1px solid #222; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         h2 { color: var(--red); text-align: center; font-size: 28px; margin-bottom: 20px; letter-spacing: 2px; }
         
-        /* GUIAS DE PASSO A PASSO */
         .tutorial-section { background: #1a1a1a; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #333; }
         .tutorial-section h3 { font-size: 14px; color: var(--red); margin-top: 0; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 5px; }
         .step { font-size: 13px; margin: 8px 0; color: #ccc; display: flex; gap: 10px; }
@@ -43,26 +42,26 @@
         <h2>CLONEFLIX</h2>
 
         <div class="tutorial-section">
-            <h3>COMO FUNCIONA?</h3>
-            <div class="step"><span>1️⃣</span> <span><b>Download:</b> Baixe e instale o APK no seu Android.</span></div>
-            <div class="step"><span>2️⃣</span> <span><b>Pedido:</b> Escolha "Novo" ou "Renovação" abaixo.</span></div>
-            <div class="step"><span>3️⃣</span> <span><b>Pagamento:</b> Gere o Pix, pague e <b>copie o código</b>.</span></div>
-            <div class="step"><span>4️⃣</span> <span><b>Ativação:</b> Envie o comprovante no Zap para liberar.</span></div>
+            <h3>PASSO A PASSO</h3>
+            <div class="step"><span>1️⃣</span> <span><b>App:</b> Baixe o app no botão abaixo.</span></div>
+            <div class="step"><span>2️⃣</span> <span><b>Login:</b> Informe seu usuário e escolha o plano.</span></div>
+            <div class="step"><span>3️⃣</span> <span><b>Renovação:</b> O sistema valida se o usuário existe.</span></div>
+            <div class="step"><span>4️⃣</span> <span><b>Ativação:</b> Pague e envie a <b>FOTO</b> do comprovante.</span></div>
         </div>
 
         <div class="action-box">
-            <a href="https://www.mediafire.com/file/r3echxcrm088vl4/CLONEFLIX.apk/file" target="_blank" class="btn-download">⬇️ BAIXAR APLICATIVO</a>
-            <a href="https://wa.me/5521981773804" target="_blank" class="btn-whatsapp-top">💬 PRECISA DE AJUDA? FALE CONOSCO</a>
+            <a href="https://www.mediafire.com/file/r3echxcrm088vl4/CLONEFLIX.apk/file" target="_blank" class="btn-download">⬇️ BAIXAR APP CLONEFLIX</a>
+            <a href="https://wa.me/5521981773804" target="_blank" class="btn-whatsapp-top">💬 SUPORTE / DÚVIDAS</a>
         </div>
 
         <div id="section-home">
-            <label>Selecione sua necessidade:</label>
+            <label>O que deseja?</label>
             <select id="order-type">
-                <option value="NOVO ACESSO">🛒 QUERO COMPRAR NOVO ACESSO</option>
-                <option value="RENOVAÇÃO">🔄 QUERO RENOVAR MEU ACESSO</option>
+                <option value="RENOVAÇÃO">🔄 RENOVAR MEU ACESSO (Login Existente)</option>
+                <option value="NOVO ACESSO">🛒 COMPRAR NOVO ACESSO (Primeira vez)</option>
             </select>
 
-            <input type="text" id="new-user" placeholder="Seu Usuário (Login)">
+            <input type="text" id="new-user" placeholder="Digite seu Usuário">
             
             <label>Plano:</label>
             <select id="plan-select" onchange="atualizarValor()">
@@ -71,34 +70,33 @@
                 <option value="35">60 Dias - R$ 35,00</option>
             </select>
 
-            <label>Telas Simultâneas:</label>
+            <label>Telas:</label>
             <select id="screens-select" onchange="atualizarValor()">
                 <option value="0">1 Tela</option>
                 <option value="10">2 Telas (+ R$ 10,00)</option>
             </select>
 
-            <div class="price-info">Total a pagar: <span class="price-value" id="display-price">R$ 15,00</span></div>
-            <button class="btn-red" id="btn-gerar" onclick="gerarPix()">GERAR PIX DE PAGAMENTO</button>
+            <div class="price-info">Total: <span class="price-value" id="display-price">R$ 15,00</span></div>
+            <button class="btn-red" id="btn-gerar" onclick="processarPedido()">PROSSEGUIR COM PIX</button>
         </div>
     </div>
 
     <div id="pix-area" class="hidden">
-        <h3 style="color:#000; margin-top:0;">Pagamento Pix</h3>
-        <p style="color:#666; font-size: 13px;">Use o QR Code ou Copia e Cola:</p>
+        <h3 style="color:#000; margin-top:0;">Pagar via Pix</h3>
+        <p style="color:#666; font-size: 13px;">Pague e anexe o comprovante no suporte.</p>
         <img id="pix-qr" src="" alt="QR Code">
         <div class="pix-code-box" id="pix-code-text">Gerando...</div>
         <button class="btn-red" style="background:#444;" onclick="copyPix()">COPIAR CÓDIGO PIX</button>
-        
         <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-        
-        <p style="color: #000; font-size: 13px; font-weight: bold;">⚠️ Passo Obrigatório:</p>
-        <button class="btn-whatsapp-pay" onclick="enviarComprovante()">✅ ENVIAR COMPROVANTE AGORA</button>
-        <button class="btn-outline" style="width:100%; border-color:#ccc; margin-top:10px;" onclick="location.reload()">VOLTAR</button>
+        <p style="color: #d32f2f; font-size: 13px; font-weight: bold;">⚠️ OBRIGATÓRIO: Enviar FOTO do comprovante!</p>
+        <button class="btn-whatsapp-pay" onclick="enviarComprovante()">✅ ENVIAR DADOS + FOTO DO PAGAMENTO</button>
+        <button class="btn-outline" style="width:100%; border-color:#ccc; margin-top:10px;" onclick="location.reload()">CANCELAR</button>
     </div>
 </div>
 
 <script>
     const MP_TOKEN = "APP_USR-8338687905947152-120302-491c360146851b6fa525d557a014c433-2945698544";
+    const FB_URL = "https://cloneflix-16f9c-default-rtdb.firebaseio.com/usuarios";
     let dadosCompra = {};
 
     function atualizarValor() {
@@ -106,12 +104,39 @@
         document.getElementById('display-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 
-    async function gerarPix() {
+    async function processarPedido() {
         const user = document.getElementById('new-user').value.trim();
-        if(!user) return alert("Informe seu usuário para identificação!");
-
-        document.getElementById('btn-gerar').innerText = "GERANDO PIX...";
         const tipo = document.getElementById('order-type').value;
+
+        if(!user) return alert("Por favor, informe o usuário!");
+        document.getElementById('btn-gerar').innerText = "VERIFICANDO...";
+
+        // Se for renovação, verifica se o usuário existe no Firebase
+        if(tipo === "RENOVAÇÃO") {
+            try {
+                const res = await fetch(`${FB_URL}.json`);
+                const data = await res.json();
+                let existe = false;
+                for(let id in data) {
+                    if(data[id].user === user) { existe = true; break; }
+                }
+                if(!existe) {
+                    alert("⚠️ USUÁRIO NÃO ENCONTRADO!\nSe você ainda não tem conta, escolha 'NOVO ACESSO'.");
+                    document.getElementById('btn-gerar').innerText = "PROSSEGUIR COM PIX";
+                    return;
+                }
+            } catch (e) {
+                alert("Erro ao validar usuário. Tente novamente.");
+                document.getElementById('btn-gerar').innerText = "PROSSEGUIR COM PIX";
+                return;
+            }
+        }
+
+        gerarPix(user, tipo);
+    }
+
+    async function gerarPix(user, tipo) {
+        document.getElementById('btn-gerar').innerText = "GERANDO PIX...";
         const planoStr = document.getElementById('plan-select').options[document.getElementById('plan-select').selectedIndex].text;
         const adicional = document.getElementById('screens-select').value;
         const total = parseFloat(document.getElementById('plan-select').value) + parseFloat(adicional);
@@ -132,16 +157,16 @@
                 document.getElementById('main-ui').classList.add('hidden');
                 document.getElementById('pix-area').classList.remove('hidden');
             }
-        } catch (e) { alert("Erro ao gerar Pix."); document.getElementById('btn-gerar').innerText = "GERAR PIX AGORA"; }
+        } catch (e) { alert("Erro ao gerar Pix."); document.getElementById('btn-gerar').innerText = "PROSSEGUIR COM PIX"; }
     }
 
     function copyPix() {
         navigator.clipboard.writeText(document.getElementById('pix-code-text').innerText);
-        alert("Código Pix Copiado! Agora pague no seu App do Banco.");
+        alert("Código Copiado!");
     }
 
     function enviarComprovante() {
-        const msg = `🚀 *NOVA SOLICITAÇÃO*%0A%0A📌 *Ação:* ${dadosCompra.tipo}%0A👤 *Usuário:* ${dadosCompra.user}%0A📺 *Telas:* ${dadosCompra.telas}%0A💳 *Plano:* ${dadosCompra.plano}%0A💰 *Valor Pago:* R$ ${dadosCompra.total.toFixed(2).replace('.', ',')}%0A%0A✅ *Estou enviando o comprovante!*`;
+        const msg = `🚀 *NOVA SOLICITAÇÃO*%0A%0A📌 *Ação:* ${dadosCompra.tipo}%0A👤 *Usuário:* ${dadosCompra.user}%0A📺 *Telas:* ${dadosCompra.telas}%0A💳 *Plano:* ${dadosCompra.plano}%0A💰 *Valor:* R$ ${dadosCompra.total.toFixed(2).replace('.', ',')}%0A%0A📸 *ESTOU ENVIANDO A FOTO DO COMPROVANTE...*`;
         window.open(`https://wa.me/5521981773804?text=${msg}`, '_blank');
     }
 </script>
