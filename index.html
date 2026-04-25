@@ -7,12 +7,18 @@
     <style>
         :root { --red: #E50914; --bg: #000; --card: #141414; --text: #fff; --green: #25d366; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { width: 100%; max-width: 400px; background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid #222; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        h2 { color: var(--red); text-align: center; font-size: 28px; margin-bottom: 25px; letter-spacing: 2px; }
+        .container { width: 100%; max-width: 420px; background: var(--card); padding: 25px; border-radius: 15px; border: 1px solid #222; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        h2 { color: var(--red); text-align: center; font-size: 28px; margin-bottom: 20px; letter-spacing: 2px; }
         
-        .action-box { background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px solid #333; text-align: center; margin-bottom: 20px; }
-        .btn-download { background: #fff; color: #000; display: block; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; margin-top: 10px; font-size: 14px; }
-        .btn-whatsapp-top { background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; margin-top: 10px; font-size: 14px; }
+        /* GUIAS DE PASSO A PASSO */
+        .tutorial-section { background: #1a1a1a; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #333; }
+        .tutorial-section h3 { font-size: 14px; color: var(--red); margin-top: 0; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .step { font-size: 13px; margin: 8px 0; color: #ccc; display: flex; gap: 10px; }
+        .step b { color: #fff; }
+
+        .action-box { background: #222; padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
+        .btn-download { background: #fff; color: #000; display: block; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; font-size: 14px; }
+        .btn-whatsapp-top { background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; font-size: 14px; }
         
         label { font-size: 12px; color: #aaa; margin-left: 5px; }
         input, select { width: 100%; padding: 14px; margin: 8px 0 15px 0; border-radius: 8px; border: 1px solid #333; background: #222; color: #fff; box-sizing: border-box; font-size: 16px; }
@@ -26,7 +32,7 @@
         .hidden { display: none; }
         
         #pix-area { text-align: center; background: #fff; color: #000; padding: 20px; border-radius: 12px; }
-        #pix-qr { width: 200px; height: 200px; border: 1px solid #ddd; margin: 10px 0; }
+        #pix-qr { width: 180px; height: 180px; border: 1px solid #ddd; margin: 10px 0; }
         .pix-code-box { background: #f0f0f0; padding: 10px; border-radius: 6px; font-size: 10px; word-break: break-all; margin: 10px 0; border: 1px dashed #999; color: #333; }
     </style>
 </head>
@@ -36,22 +42,27 @@
     <div id="main-ui">
         <h2>CLONEFLIX</h2>
 
+        <div class="tutorial-section">
+            <h3>COMO FUNCIONA?</h3>
+            <div class="step"><span>1️⃣</span> <span><b>Download:</b> Baixe e instale o APK no seu Android.</span></div>
+            <div class="step"><span>2️⃣</span> <span><b>Pedido:</b> Escolha "Novo" ou "Renovação" abaixo.</span></div>
+            <div class="step"><span>3️⃣</span> <span><b>Pagamento:</b> Gere o Pix, pague e <b>copie o código</b>.</span></div>
+            <div class="step"><span>4️⃣</span> <span><b>Ativação:</b> Envie o comprovante no Zap para liberar.</span></div>
+        </div>
+
+        <div class="action-box">
+            <a href="https://www.mediafire.com/file/r3echxcrm088vl4/CLONEFLIX.apk/file" target="_blank" class="btn-download">⬇️ BAIXAR APLICATIVO</a>
+            <a href="https://wa.me/5521981773804" target="_blank" class="btn-whatsapp-top">💬 PRECISA DE AJUDA? FALE CONOSCO</a>
+        </div>
+
         <div id="section-home">
-            <div class="action-box">
-                <span style="font-size: 13px; color: #eee;">Atendimento e Aplicativo</span>
-                <a href="https://wa.me/5521981773804" target="_blank" class="btn-whatsapp-top">💬 SUPORTE WHATSAPP</a>
-                <a href="https://www.mediafire.com/file/r3echxcrm088vl4/CLONEFLIX.apk/file" target="_blank" class="btn-download">⬇️ BAIXAR APP (APK)</a>
-            </div>
-
-            <hr style="border: 0; border-top: 1px solid #222; margin: 20px 0;">
-
-            <label>Selecione uma opção:</label>
+            <label>Selecione sua necessidade:</label>
             <select id="order-type">
-                <option value="NOVO ACESSO">🛒 COMPRAR NOVO ACESSO</option>
-                <option value="RENOVAÇÃO">🔄 RENOVAR MEU ACESSO</option>
+                <option value="NOVO ACESSO">🛒 QUERO COMPRAR NOVO ACESSO</option>
+                <option value="RENOVAÇÃO">🔄 QUERO RENOVAR MEU ACESSO</option>
             </select>
 
-            <input type="text" id="new-user" placeholder="Usuário (Login)">
+            <input type="text" id="new-user" placeholder="Seu Usuário (Login)">
             
             <label>Plano:</label>
             <select id="plan-select" onchange="atualizarValor()">
@@ -60,28 +71,29 @@
                 <option value="35">60 Dias - R$ 35,00</option>
             </select>
 
-            <label>Telas:</label>
+            <label>Telas Simultâneas:</label>
             <select id="screens-select" onchange="atualizarValor()">
-                <option value="0">1 Tela (Padrão)</option>
+                <option value="0">1 Tela</option>
                 <option value="10">2 Telas (+ R$ 10,00)</option>
             </select>
 
-            <div class="price-info">Total: <span class="price-value" id="display-price">R$ 15,00</span></div>
-            <button class="btn-red" id="btn-gerar" onclick="gerarPix()">GERAR PIX AGORA</button>
+            <div class="price-info">Total a pagar: <span class="price-value" id="display-price">R$ 15,00</span></div>
+            <button class="btn-red" id="btn-gerar" onclick="gerarPix()">GERAR PIX DE PAGAMENTO</button>
         </div>
     </div>
 
     <div id="pix-area" class="hidden">
         <h3 style="color:#000; margin-top:0;">Pagamento Pix</h3>
-        <p style="color:#666; font-size: 13px;">Realize o pagamento e envie o comprovante.</p>
+        <p style="color:#666; font-size: 13px;">Use o QR Code ou Copia e Cola:</p>
         <img id="pix-qr" src="" alt="QR Code">
         <div class="pix-code-box" id="pix-code-text">Gerando...</div>
         <button class="btn-red" style="background:#444;" onclick="copyPix()">COPIAR CÓDIGO PIX</button>
         
         <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
         
-        <button class="btn-whatsapp-pay" onclick="enviarComprovante()">✅ ENVIAR COMPROVANTE</button>
-        <button class="btn-outline" style="width:100%; border-color:#ccc; margin-top:10px;" onclick="location.reload()">VOLTAR AO INÍCIO</button>
+        <p style="color: #000; font-size: 13px; font-weight: bold;">⚠️ Passo Obrigatório:</p>
+        <button class="btn-whatsapp-pay" onclick="enviarComprovante()">✅ ENVIAR COMPROVANTE AGORA</button>
+        <button class="btn-outline" style="width:100%; border-color:#ccc; margin-top:10px;" onclick="location.reload()">VOLTAR</button>
     </div>
 </div>
 
@@ -96,9 +108,9 @@
 
     async function gerarPix() {
         const user = document.getElementById('new-user').value.trim();
-        if(!user) return alert("Por favor, informe seu usuário!");
+        if(!user) return alert("Informe seu usuário para identificação!");
 
-        document.getElementById('btn-gerar').innerText = "PROCESSANDO...";
+        document.getElementById('btn-gerar').innerText = "GERANDO PIX...";
         const tipo = document.getElementById('order-type').value;
         const planoStr = document.getElementById('plan-select').options[document.getElementById('plan-select').selectedIndex].text;
         const adicional = document.getElementById('screens-select').value;
@@ -120,16 +132,16 @@
                 document.getElementById('main-ui').classList.add('hidden');
                 document.getElementById('pix-area').classList.remove('hidden');
             }
-        } catch (e) { alert("Erro ao gerar Pix."); }
+        } catch (e) { alert("Erro ao gerar Pix."); document.getElementById('btn-gerar').innerText = "GERAR PIX AGORA"; }
     }
 
     function copyPix() {
         navigator.clipboard.writeText(document.getElementById('pix-code-text').innerText);
-        alert("Copiado com sucesso!");
+        alert("Código Pix Copiado! Agora pague no seu App do Banco.");
     }
 
     function enviarComprovante() {
-        const msg = `🚀 *PEDIDO CLONEFLIX*%0A%0A📌 *Ação:* ${dadosCompra.tipo}%0A👤 *Usuário:* ${dadosCompra.user}%0A📺 *Telas:* ${dadosCompra.telas}%0A💳 *Plano:* ${dadosCompra.plano}%0A💰 *Valor:* R$ ${dadosCompra.total.toFixed(2).replace('.', ',')}%0A%0A✅ *Paguei o Pix, segue o comprovante!*`;
+        const msg = `🚀 *NOVA SOLICITAÇÃO*%0A%0A📌 *Ação:* ${dadosCompra.tipo}%0A👤 *Usuário:* ${dadosCompra.user}%0A📺 *Telas:* ${dadosCompra.telas}%0A💳 *Plano:* ${dadosCompra.plano}%0A💰 *Valor Pago:* R$ ${dadosCompra.total.toFixed(2).replace('.', ',')}%0A%0A✅ *Estou enviando o comprovante!*`;
         window.open(`https://wa.me/5521981773804?text=${msg}`, '_blank');
     }
 </script>
