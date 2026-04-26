@@ -83,7 +83,7 @@
         </div>
 
         <div class="action-box">
-            <a href="https://www.mediafire.com/file/eg3efo4yhye4ous/CLONEFLIX.apk/file" target="_blank" class="btn-download">⬇️ BAIXAR APLICATIVO OFICIAL</a>
+            <a href="https://www.mediafire.com/file/580fmkx9it2w1dz/CLONEFLIX_VIP.apk/file" target="_blank" class="btn-download">⬇️ BAIXAR APLICATIVO OFICIAL</a>
         </div>
 
         <div id="section-home">
@@ -91,7 +91,7 @@
             <select id="order-type" onchange="alternarFluxo()">
                 <option value="RENOVAÇÃO">🔄 RENOVAÇÃO (Já sou cliente)</option>
                 <option value="NOVO ACESSO">🛒 NOVO ACESSO (Primeira vez)</option>
-                <option value="TESTE">🧪 TESTE GRÁTIS (1 HORA)</option>
+                <option value="TESTE">🧪 TESTE GRÁTIS (1 Dia)</option>
             </select>
 
             <div id="campos-venda">
@@ -99,24 +99,24 @@
                 
                 <label>Selecione o Plano:</label>
                 <select id="plan-select" onchange="atualizarValor()">
-                    <option value="15">Plano 15 Dias - R$ 15,00</option>
-                    <option value="20">Plano 30 Dias - R$ 20,00</option>
-                    <option value="35">Plano 60 Dias - R$ 35,00</option>
+                    <option value="11">Plano 15 Dias - R$ 11,00</option>
+                    <option value="18">Plano 30 Dias - R$ 18,00</option>
+                    <option value="30">Plano 60 Dias - R$ 30,00</option>
                 </select>
 
                 <label>Telas:</label>
                 <select id="screens-select" onchange="atualizarValor()">
                     <option value="0">1 Tela (Padrão)</option>
-                    <option value="10">2 Telas (+ R$ 10,00)</option>
+                    <option value="10">2 Telas (+ R$ 5,00)</option>
                 </select>
 
-                <div class="price-info">Total a Pagar: <span class="price-value" id="display-price">R$ 15,00</span></div>
+                <div class="price-info">Total a Pagar: <span class="price-value" id="display-price">R$ 11,00</span></div>
                 <button class="btn-red" id="btn-gerar" onclick="processarPedido()">GERAR PIX AGORA</button>
             </div>
 
             <div id="campos-teste" class="hidden">
                 <p style="text-align: center; font-size: 14px; color: #aaa; margin: 20px 0; line-height: 1.6;">
-                    Solicite seu teste de 1 hora. <br>
+                    Solicite seu teste de 1 Dia. <br>
                     Você será atendido via WhatsApp para receber as credenciais.
                 </p>
                 <button class="btn-green" onclick="solicitarTeste()">💬 SOLICITAR TESTE GRÁTIS</button>
@@ -226,7 +226,7 @@
     }
 
     function solicitarTeste() {
-        const msg = `Olá! Gostaria de um *TESTE GRÁTIS DE 1 HORA* do Cloneflix para conhecer o sistema.`;
+        const msg = `Olá! Gostaria de um *TESTE GRÁTIS DE 1 Dia* do Cloneflix para conhecer o sistema.`;
         window.open(`https://wa.me/5521981773804?text=${msg}`, '_blank');
     }
 </script>
