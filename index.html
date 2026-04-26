@@ -195,7 +195,7 @@
         const planoStr = document.getElementById('plan-select').options[document.getElementById('plan-select').selectedIndex].text;
         const adicional = document.getElementById('screens-select').value;
         const total = parseFloat(document.getElementById('plan-select').value) + parseFloat(adicional);
-        const telas = adicional == "10" ? "2 Telas" : "1 Tela";
+        const telas = adicional == "5" ? "2 Telas" : "1 Tela";
 
         dadosCompra = { user, total, telas, plano: planoStr, tipo };
 
